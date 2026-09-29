@@ -9,6 +9,8 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+  elasticsearch:
+    uris: localhost:9200
 logging:
   level:
     com:

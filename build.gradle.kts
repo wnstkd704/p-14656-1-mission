@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+    runtimeOnly("org.springframework.boot:spring-boot-docker-compose")
     implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     testImplementation("org.springframework.boot:spring-boot-starter-data-elasticsearch-test")
