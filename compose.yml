@@ -6,4 +6,4 @@ services:
       - "9200:9200"
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=false
+      - xpack.security.enabled=false # 없으면 접속 정보를 작성해야 한다
