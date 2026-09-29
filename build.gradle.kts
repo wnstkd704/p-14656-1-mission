@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     testImplementation(platform("org.testcontainers:testcontainers-bom:1.19.8"))
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:testcontainers-elasticsearch")
