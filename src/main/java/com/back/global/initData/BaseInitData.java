@@ -28,6 +28,9 @@ public class BaseInitData {
             work6();
             work7();
             work8();
+            work9();
+            work10();
+            work11();
         };
     }
 
@@ -106,5 +109,41 @@ public class BaseInitData {
             var fetchedComment = commentService.findById(comment.getId());
             log.debug("조회된 Comment: {}", fetchedComment);
         }
+    }
+
+    private void work9(){
+        log.debug("Post 당 Comment 조회");
+
+        for (int i = 1; i <= 5; i++) {
+            Post post = postService.create("Post for Comment " + i, "Content for post " + i, "Author" + i);
+            String content = "This is a comment number " + i + " for post " + post.getId();
+            String author = "Commenter" + i;
+            var comment = commentService.create(post, content, author);
+            log.debug("Created Comment: {}", comment);
+        }
+
+        for (Post post : postService.findAll()) {
+            var comments = commentService.findByPostId(post.getId());
+            log.debug("Post ID: {} 에 대한 Comments: {}", post.getId(), comments);
+        }
+        log.debug("Comment 조회 완료");
+    }
+
+    private void work10(){
+        log.debug("Comment 수정");
+        for (var comment : commentService.findAll()) {
+            String newContent = comment.getContent() + " [Edited]";
+            var updatedComment = commentService.update(comment.getId(), newContent);
+            log.debug("Updated Comment: {}", updatedComment);
+        }
+    }
+
+    private void work11(){
+        log.debug("Comment 삭제");
+        for (var comment : commentService.findAll()) {
+            commentService.delete(comment);
+            log.debug("Deleted Comment with ID: {}", comment.getId());
+        }
+        log.debug("삭제 후 남은 Comment 개수: {}", commentService.count());
     }
 }
